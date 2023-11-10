@@ -80,3 +80,46 @@ void printMenu() {
     printf("14 - Sair\n");
     printf("Digite a opcao que voce quer executar: ");
 }
+
+void alterarTarefa(ListaDeTarefas *lt) {
+    int tarefai, modificaçao;
+
+    printf("Digite o numero da tarefa que deseja modificar: ");
+    scanf("%d", &tarefai);
+  
+    if (tarefai < 1 || tarefai > lt->qtd) {
+        printf("Numero invalido.\n");
+        return;
+    }
+    //Pergunta para o usuario qual das informaçoes da tarefa ele desja alterar
+    printf("O que deseja modificar : (1 - Tarefa, 2 - Descricao, 3 - Prioridade, 4 - Estado, 5 - Categoria): ");
+    scanf("%d", &modificaçao);
+    //Altera a informaçao
+    Tarefas *tarefa = &lt->tarefas[tarefai - 1];
+    
+    switch (modificaçao) {
+        case 1:
+            printf("Nova tarefa: ");
+            scanf("%s", tarefa->tarefa);
+            break;
+        case 2:
+            printf("Nova descrição: ");
+            scanf("%s", tarefa->descricao);
+            break;
+        case 3:
+            printf("Nova prioridade: ");
+            scanf("%d", &tarefa->prioridade);
+            break;
+        case 4:
+            printf("Novo estado (0 - Nao Iniciado, 1 - Em Andamento, 2 - Completo): ");
+            scanf("%d", &tarefa->estado);
+            break;
+        case 5:
+            printf("Nova categoria: ");
+            scanf("%s", tarefa->categoria);
+            break;
+        default:
+            printf("Opcao invalida.\n");
+            break;
+    }
+}
