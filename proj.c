@@ -123,3 +123,69 @@ void alterarTarefa(ListaDeTarefas *lt) {
             break;
     }
 }
+
+//Essa funçao filtra a tarefa atraves de sua prioridade 
+void filtrar_prioridade(ListaDeTarefas lt, int prioridade) {
+    for (int i = 0; i < lt.qtd; i++) {
+      //Realiza a filtragem caso a prioridade digitado pelo usuario seja igual a ja cadastrada anteriormente
+        if (lt.tarefas[i].prioridade == prioridade) {
+          printf("------------------- \n");
+          printf("Tarefa %d:\n", i + 1);
+          printf("Nome: %s\n", lt.tarefas[i].tarefa);
+          printf("Descricao: %s\n", lt.tarefas[i].descricao);
+          printf("Prioridade: %d\n", lt.tarefas[i].prioridade);
+          printf("Estado: %d\n", lt.tarefas[i].estado);
+          printf("Categoria: %s\n", lt.tarefas[i].categoria);
+          printf("------------------- \n");
+          printf("\n");
+        }
+    }
+}
+//filtra por estado
+void filtrar_estado(ListaDeTarefas lt, int estado) {
+    for (int i = 0; i < lt.qtd; i++) {
+      //analisa se o estado digitado pelo usuario é igual ao digitado anteriormente
+        if (lt.tarefas[i].estado == estado) {
+          printf("------------------- \n");
+            printf("Tarefa %d:\n", i + 1);
+            printf("Nome: %s\n", lt.tarefas[i].tarefa);
+            printf("Descricao: %s\n", lt.tarefas[i].descricao);
+            printf("Prioridade: %d\n", lt.tarefas[i].prioridade);
+            printf("Estado: %d\n", lt.tarefas[i].estado);
+            printf("Categoria: %s\n", lt.tarefas[i].categoria);
+            printf("------------------- \n");
+        }
+    }
+}
+//essa funçao filtra por categoria
+void filtrar_categoria(ListaDeTarefas lt, char categoria[]) {
+    for (int i = 0; i < lt.qtd; i++) {
+        //ve se a categoria é a mesma digitada anteriormente 
+        if (strcmp(lt.tarefas[i].categoria, categoria) == 0) {
+          printf("------------------- \n");
+            printf("Tarefa %d:\n", i + 1);
+            printf("Nome: %s\n", lt.tarefas[i].tarefa);
+            printf("Descricao: %s\n", lt.tarefas[i].descricao);
+            printf("Prioridade: %d\n", lt.tarefas[i].prioridade);
+            printf("Estado: %d\n", lt.tarefas[i].estado);
+            printf("Categoria: %s\n", lt.tarefas[i].categoria);
+          printf("------------------- \n");
+          
+        }
+    }
+}
+//filtra prioridade e categoria
+void filtrar_prioridade_e_categoria(ListaDeTarefas lt, int prioridade, char categoria[]) {
+    for (int i = 0; i < lt.qtd; i++) {
+      //analisa para ver se a prioridade e a categoria sao iguais as anteriormente escritas
+        if (lt.tarefas[i].prioridade == prioridade && strcmp(lt.tarefas[i].categoria, categoria) == 0) {
+            printf("Tarefa %d:\n", i + 1);
+            printf("Nome: %s\n", lt.tarefas[i].tarefa);
+            printf("Descricao: %s\n", lt.tarefas[i].descricao);
+            printf("Prioridade: %d\n", lt.tarefas[i].prioridade);
+            printf("Estado: %d\n", lt.tarefas[i].estado);
+            printf("Categoria: %s\n", lt.tarefas[i].categoria);
+            printf("\n");
+        }
+    }
+}
