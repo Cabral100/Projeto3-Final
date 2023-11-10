@@ -262,3 +262,29 @@ void exportar_prioridade_e_categoria(ListaDeTarefas lt, int prioridade, char cat
 
     fclose(arquivo);
 }
+
+//Essa funçao escreve um arquivo binario e salva as informaçoes ja escritas anteriormente nele
+int salvarLista(ListaDeTarefas lt, char nome[]) {
+    FILE *arquivo = fopen(nome, "wb");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    fwrite(&lt, sizeof(ListaDeTarefas), 1, arquivo);
+    fclose(arquivo);
+    return 0;
+}
+//Essa funçao carrega a lista
+int carregarLista(ListaDeTarefas *lt, char nome[]) {
+    FILE *arquivo = fopen(nome, "rb");
+
+    if (arquivo == NULL) {
+        return 1;
+    }
+
+    fread(lt, sizeof(ListaDeTarefas), 1, arquivo);
+    fclose(arquivo);
+    return 0;
+}
